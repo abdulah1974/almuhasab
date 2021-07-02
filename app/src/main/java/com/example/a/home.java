@@ -22,12 +22,14 @@ Button orders,publish;
                 startActivity(iInt);
 
 
+
             }
         });
         publish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent iInt=new Intent(home.this,upload.class);
+                startActivity(iInt);
             }
         });
 

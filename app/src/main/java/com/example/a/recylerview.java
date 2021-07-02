@@ -14,37 +14,41 @@ import java.util.ArrayList;
 
 public class recylerview extends RecyclerView.Adapter<recylerview.ViewHolder> {
     Context context;
-    private  ArrayList size;
-    ArrayList<Integer> imgList;;
+    ArrayList<String> Phone;
+    ArrayList<String> price;
+    ArrayList<String> Name;
+    ArrayList<Integer> Image;
     LayoutInflater mInflater;
-  recylerview(Context context,ArrayList arrayList ,ArrayList<Integer> imgList)
+  recylerview(Context context ,ArrayList<Integer> imgList,ArrayList<String> Name,ArrayList<String> price,ArrayList<String> Phone)
   {
-        this.context = context;
-        this.size=arrayList;
-        this.imgList=imgList;
-    }
+    this.context = context;
+    this.Image=imgList;
+    this.Name=Name;
+    this.price=price;
+    this.Phone=Phone;
+
+  }
 
     @NonNull
     @Override
     public recylerview.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.recorders, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recorders,parent,false);
         return new ViewHolder(view);
     }
 
 
     @Override
     public void onBindViewHolder(@NonNull recylerview.ViewHolder holder, int position) {
-        size.get(position);
-        holder.item.setImageResource(Integer.valueOf(imgList.get(position)));
-        holder.ItemName.setText(String.valueOf(size.get(position)));
-        holder.ItemPrice.setText(String.valueOf(size.get(position)));
-        holder.photo.setText(String.valueOf(size.get(position)));
+        holder.item.setImageResource(Integer.valueOf(Image.get(position)));
+        holder.ItemName.setText(String.valueOf(Name.get(position)));
+        holder.ItemPrice.setText(String.valueOf(price.get(position)));
+        holder.phone.setText(String.valueOf(Phone.get(position)));
     }
 
 
     @Override
     public int getItemCount(){
-        return size.size();
+        return Phone.size();
 
     }
 
@@ -53,13 +57,13 @@ public class recylerview extends RecyclerView.Adapter<recylerview.ViewHolder> {
         ImageView item;
         TextView ItemName;
         TextView ItemPrice;
-        TextView photo;
+        TextView phone;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ItemName = itemView.findViewById(R.id.item_name_);
             item = itemView.findViewById(R.id.item_);
             ItemPrice = itemView.findViewById(R.id.item_price);
-            photo=itemView.findViewById(R.id.phone);
+            phone=itemView.findViewById(R.id.phone);
 
         }
     }
